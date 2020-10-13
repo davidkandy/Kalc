@@ -19,5 +19,6 @@ namespace Kalc
         Modulus,
 
         Power
+            
     }
 }
