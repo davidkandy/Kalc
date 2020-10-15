@@ -1,56 +1,54 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Kalc
 {
     class Program
     {
+        
         static void Main(string[] args)
         {
-            Operations Ops = new Operations();
+            Operations kalc = new Operations();
+            double ans;
 
-            /*
-             * Do you want me to step into it??
-             * Give it a run, man.
-             */
+            Console.WriteLine("Hello!");
+            Console.WriteLine("Welcome to Kalc");
 
-            Console.WriteLine("Hello! \n");
-            Console.WriteLine("Welcome to Kalc \n");
-
-            Console.Write("Enter first number from your equation \n");
+            Console.WriteLine("Enter first number from your equation");
             string x = Console.ReadLine();
             int first = Convert.ToInt32(x);
 
-            Console.Write("Enter operation sign \n");
+            ans = first;
+
+            Console.WriteLine("Enter operation sign");
             string operationSign = Console.ReadLine();
-            
-            // Should be working now.
-            // I have to move our session to tommorow.
-            // Also maybe we should be starting by 5.
-            // Late times like these can be a little busy back here.
-            // 5 sounds okay for me
-            // Just that the uncertainty of there being light here is high, but 5 will be better.
-            // So how about 1pm then? Alright, 1pm it is 
-            // 
-            
-            Ops.operationType = Ops.OperationSign(operationSign);
-            //var op = Console.ReadLine();
-            //kalc.operationType(op);
 
+            while (true)
+            {
+                kalc.operationType = kalc.OperationSign(operationSign);
 
+                Console.WriteLine("Enter next numberb from your equation");
+                string y = Console.ReadLine();
+                int second = Convert.ToInt32(y);
 
-            Console.Write("Enter second number from your equation \n");
-            string y = Console.ReadLine();
-            int second = Convert.ToInt32(y);
+                //Operations kalc = new Operations(first, second);
+                ans = kalc.CalculateOperation(ans, second);
 
-            Operations kalc = new Operations(first, second);
-            var answer = kalc.PerformOperation(first, second);
-            Console.WriteLine(answer);
-            Console.ReadLine();
+                Console.WriteLine("Enter operation sign");
+                string Sign = Console.ReadLine();
+
+                if (string.IsNullOrEmpty(Sign)) break;
+
+                //bool b1 = string.IsNullOrEmpty(Sign);
+
+                //if (!b1)
+                //{
+                //    kalc.operationType = kalc.OperationSign(Sign);
+                //    continue;
+                //}
+            }
+            Console.WriteLine(ans);
 
         }
+
     }
 }

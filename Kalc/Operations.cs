@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Globalization;
 
 namespace Kalc
 {
@@ -7,14 +6,14 @@ namespace Kalc
     {
         #region Props
 
-        public int X { get; set; }
-        public int Y { get; set; }
+        public int[] X { get; set; }
+        public int[] Y { get; set; }
         public OperationType operationType { get; set; }
         public int numberInput { get; set; }
         #endregion
 
         #region Constructors
-        public Operations (int a, int b)
+        public Operations (int[] a, int[] b)
         {
             X = a;
             Y = b;
@@ -26,12 +25,12 @@ namespace Kalc
         #endregion
 
         #region Methods
-        public int PerformOperation(int X, int Y)
+        public double PerformOperation(double X, double Y)
         {
             //long numberinput = this.numberInput;
             //while (numberinput >= 0 || numberinput <= 1000000000000000000)
             //{
-                return CalculateOperation(X,Y);
+            return CalculateOperation(X,Y);
             //}
             //return 0;
 
@@ -58,7 +57,9 @@ namespace Kalc
             }
         }
 
-        public int CalculateOperation(int X, int Y)
+        // Divided numbers create decimal points.
+        // Int can't always work.
+        public double CalculateOperation(double X, double Y)
         {
             //var operation = new Operations(X, Y);
 
@@ -78,7 +79,7 @@ namespace Kalc
                     case OperationType.Modulus:
                         return (X % Y);
                     case OperationType.Power:
-                        return (int)Math.Pow(X,Y);
+                        return Math.Pow(X,Y);
                     default:
                         throw new Exception($"Invalid Operation {operationType}");
                 }
