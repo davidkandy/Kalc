@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Kalc
 {
@@ -8,7 +9,11 @@ namespace Kalc
         static void Main(string[] args)
         {
             Operations kalc = new Operations();
+
             double ans;
+
+            List<string> equation = new List<string>();
+
 
             Console.WriteLine("Hello!");
             Console.WriteLine("Welcome to Kalc");
@@ -18,9 +23,11 @@ namespace Kalc
             int first = Convert.ToInt32(x);
 
             ans = first;
+            equation.Add(x);
 
             Console.WriteLine("Enter operation sign");
             string operationSign = Console.ReadLine();
+            equation.Add(operationSign);
 
             while (true)
             {
@@ -30,13 +37,18 @@ namespace Kalc
                 string y = Console.ReadLine();
                 int second = Convert.ToInt32(y);
 
+                equation.Add(y);
+
                 //Operations kalc = new Operations(first, second);
                 ans = kalc.CalculateOperation(ans, second);
 
                 Console.WriteLine("Enter operation sign");
                 string Sign = Console.ReadLine();
 
+                equation.Add(Sign);
+
                 if (string.IsNullOrEmpty(Sign)) break;
+
 
                 //bool b1 = string.IsNullOrEmpty(Sign);
 
@@ -46,8 +58,29 @@ namespace Kalc
                 //    continue;
                 //}
             }
-            Console.WriteLine(ans);
 
+            //foreach (string eqn in equation)
+            //{
+            //    Console.Write(eqn);
+            //}
+
+            // I told you to google, it...You're a programmer man, you can't know all the properties by heart.
+            for (int i = 0 ; i < equation.Count; i++)
+            {
+                // You're supposed to index the list, like this
+                string eqn = equation[i];
+                
+                if (i > 0)
+                {
+                    Console.Write(" ");
+                }
+
+                Console.Write(eqn);
+            }
+            Console.WriteLine($"= {ans}");
+
+
+            Console.ReadKey();
         }
 
     }
