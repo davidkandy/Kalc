@@ -78,9 +78,34 @@ namespace Kalc
                 Console.Write(eqn);
             }
             Console.WriteLine($"= {ans}");
+            
+            // Console.ReadKey();
+            Again();
+        }
+        
+        static void Again()
+        {
+            Console.WriteLine("Would you like to perform another calculation?");
+            string answer = Console.ReadLine();
 
+            try
+            {
+                if (answer[0] == 'y' || answer[0] == 'Y')
+                {
+                    // Hmmmm...Interesting approach. 
+                    // Let's go with this then...
+                    // Give it a run.
 
-            Console.ReadKey();
+                    // IT WORKS
+                    // Lol...Good work.  Thanks bro
+                    Main(new string[0]);
+
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
     }
