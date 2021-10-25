@@ -85,19 +85,14 @@ namespace Kalc
         
         static void Again()
         {
-            Console.WriteLine("Would you like to perform another calculation?");
+            Console.WriteLine("Would you like to perform another calculation? y/n");
             string answer = Console.ReadLine();
 
             try
             {
                 if (answer[0] == 'y' || answer[0] == 'Y')
                 {
-                    // Hmmmm...Interesting approach. 
-                    // Let's go with this then...
-                    // Give it a run.
-
-                    // IT WORKS
-                    // Lol...Good work.  Thanks bro
+                    Console.WriteLine("\n");
                     Main(new string[0]);
 
                 }
